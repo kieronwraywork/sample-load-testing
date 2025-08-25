@@ -7,7 +7,7 @@ This example application hosts the following services:
 | Grafana    | http://localhost:3111 | Dashboards and charts (admin:admin)                       |
 | pg_grafana |                       | Postgres to hold grafana configuration                    |
 | Prometheus | http://localhost:9090 | Prometheus sink for the sample aplicaiton metrics         |
-| switchApi  | http://localhost:9000 | Simple .netcore webapi to react to the load test          |
+| switchApi  | http://localhost:9000 | Simple .netcore webapi to react to the load test (only needed if you dont have a real api to fire the tests against)          |
 | influxdb   |                       | Database to hold k6 results                               |
 | k6         |                       | K6 load test host, running the tests from k6scripts/\*.js |
 
