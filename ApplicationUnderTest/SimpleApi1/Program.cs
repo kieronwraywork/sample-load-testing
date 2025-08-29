@@ -36,6 +36,19 @@ builder.Services.AddOpenTelemetry()
           //.AddConsoleExporter()
           );
 
+// builder.Services.Configure<Microsoft.AspNetCore.Http.Json.JsonOptions>(options =>
+// {
+// options.SerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+// });
+// builder.Services.Configure<Microsoft.AspNetCore.Mvc.JsonOptions>(options =>
+// {
+//     options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+// });
+
+builder.Services.ConfigureHttpJsonOptions(options => {
+    options.SerializerOptions.WriteIndented = true;
+    options.SerializerOptions.IncludeFields = true;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,40 +61,36 @@ if (app.Environment.IsDevelopment())
 // Configure the Prometheus scraping endpoint
 app.MapPrometheusScrapingEndpoint();
 
-app.MapPost("initiate", ([FromBody] InitPayload payload) =>
+app.MapPost("initiate", ( InitPayload payload) =>
 {
     return Results.StatusCode(payload.ResponseCode);
 });
-app.MapPost("refund", ([FromBody] RefundPayload payload) =>
-{ 
-    return Results.StatusCode(payload.ResponseCode);
-});
-app.MapPost("capture", ([FromBody] CapturePayload payload) =>
+app.MapPost("refund", ( RefundPayload payload) =>
 {
     return Results.StatusCode(payload.ResponseCode);
 });
-app.MapPost("error", ([FromBody] BasicPayload payload) =>
-{ 
+app.MapPost("capture", ( CapturePayload payload) =>
+{
+    return Results.StatusCode(payload.ResponseCode);
+});
+app.MapPost("error", ( BasicPayload payload) =>
+{
     return Results.StatusCode(payload.ResponseCode);
 });
 app.Run();
 
 
-record BasicPayload
+public class BasicPayload
 {
-    public string CardType;
+    public string? CardType;
     public float? Amount;
     public int ResponseCode;
 };
-record RefundPayload : BasicPayload {
+public class  RefundPayload : BasicPayload
+{
 
-    public string TransactionId;
+    public string? TransactionId;
 }
-record InitPayload : BasicPayload{}
-record CapturePayload : RefundPayload{}
+public class InitPayload : BasicPayload { }
+public class CapturePayload : RefundPayload { }
 
-record InitPayload {
-    string CardType;
-    float Amount;
-    int ResponseCode;
-};
