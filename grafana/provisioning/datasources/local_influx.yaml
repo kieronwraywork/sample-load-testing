@@ -1,0 +1,30 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: LOCAL_INFLUX
+    orgId: 1
+
+datasources:
+  - name: LOCAL_INFLUX
+    type: influx
+    access: proxy
+    uid: cevyn8xwabcw0d
+    url: http://influxdb:8086
+    password:
+    user:
+    database:
+    basicAuth: false
+    basicAuthUser:
+    basicAuthPassword:
+    withCredentials:
+    isDefault: false
+    jsonData:
+      tlsAuth: false
+      tlsAuthWithCACert: false
+      pdcInjected: false
+    secureJsonData:
+      tlsCACert: ""
+      tlsClientCert: ""
+      tlsClientKey: ""
+    version: 1
+    editable: true

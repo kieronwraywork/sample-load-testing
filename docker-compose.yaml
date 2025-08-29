@@ -83,7 +83,7 @@ services:
     volumes:
       - ./k6scripts:/k6-tests
     entrypoint: [ "k6" ]
-    command: [ "run", "/k6-tests/test1.js", "--out", "influxdb=http://influxdb:8086/k6" ]      
+    command: [ "run", "/k6-tests/k6-continuous.js", "--out", "influxdb=http://influxdb:8086/k6" ]      
 volumes:
   pg_grafana:
     driver: local

@@ -64,8 +64,12 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
-app.MapGet("/", () =>
+app.MapGet("/{transactionId}", (string transactionId) =>
 {
+    if (!string.IsNullOrEmpty(transactionId))
+    {
+        throw new Exception("transaction failed");
+    }
     Thread.Sleep(Random.Shared.Next(50, 200));
     return "Hello World!";
 });
