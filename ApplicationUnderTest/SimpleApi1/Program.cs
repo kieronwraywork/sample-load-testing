@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
@@ -46,37 +48,40 @@ if (app.Environment.IsDevelopment())
 // Configure the Prometheus scraping endpoint
 app.MapPrometheusScrapingEndpoint();
 
-var summaries = new[]
+app.MapPost("initiate", ([FromBody] InitPayload payload) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-app.MapGet("/{transactionId}", (string transactionId) =>
-{
-    if (!string.IsNullOrEmpty(transactionId))
-    {
-        throw new Exception("transaction failed");
-    }
-    Thread.Sleep(Random.Shared.Next(50, 200));
-    return "Hello World!";
+    return Results.StatusCode(payload.ResponseCode);
 });
-
+app.MapPost("refund", ([FromBody] RefundPayload payload) =>
+{ 
+    return Results.StatusCode(payload.ResponseCode);
+});
+app.MapPost("capture", ([FromBody] CapturePayload payload) =>
+{
+    return Results.StatusCode(payload.ResponseCode);
+});
+app.MapPost("error", ([FromBody] BasicPayload payload) =>
+{ 
+    return Results.StatusCode(payload.ResponseCode);
+});
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+
+record BasicPayload
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    public string CardType;
+    public float? Amount;
+    public int ResponseCode;
+};
+record RefundPayload : BasicPayload {
+
+    public string TransactionId;
 }
+record InitPayload : BasicPayload{}
+record CapturePayload : RefundPayload{}
+
+record InitPayload {
+    string CardType;
+    float Amount;
+    int ResponseCode;
+};
