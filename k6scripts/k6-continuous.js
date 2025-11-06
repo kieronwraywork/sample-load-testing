@@ -3,13 +3,15 @@ import { group, check, sleep, fail } from "k6";
 import { Trend } from "k6/metrics";
 
 const errorTrends = {
-  visa_errors: new Trend('visa_errors'),
-  mastercard_errors: new Trend('mastercard_errors'),
-  amex_errors: new Trend('amex_errors'),
-  discover_errors: new Trend('discover_errors'),
+  visa_errors: new Trend('visa_errors_trend', false),
+  visa_money: new Trend('visa_money_trend', false),
+  mastercard_errors: new Trend('mastercard_errors_trend', false),
+  amex_errors: new Trend('amex_errors_trend', false),
+  discover_errors: new Trend('discover_errors_trend', false),
+  paypal_errors: new Trend('paypal_errors_trend', false)
 
 };
-const TestDuration='1s';
+const TestDuration='20s';
 const Infinite_tests=false;
 const TestExecutor=Infinite_tests ? 'externally-controlled' : 'constant-vus';
 // see https://sii.pl/blog/en/performance-under-control-with-k6-additional-configurations-types-of-scenario-models-and-executors/
@@ -37,11 +39,11 @@ export const options = {
     visa_error: {
       exec: 'visa_error',
       executor: TestExecutor,
-      duration: TestDuration,
+      duration: '1s',
       vus: 1,
     },
     paypal_error: {
-      exec: 'paypal_errorzz',
+      exec: 'paypal_error_zz',
       executor: TestExecutor,
       duration: TestDuration,
       vus: 1,
@@ -53,9 +55,13 @@ export const options = {
 
 function sendDummyTransaction(errors, transactionMethod, payload, expectedResponseCode) {
 
+let params = {
+    headers: { 'Content-Type': 'application/json' }
 
-  const res = http.post(`http://switchApi:8080/${transactionMethod}`,JSON.stringify( payload));
+      }
+  const res = http.post(`http://switchApi:8080/${transactionMethod}`,JSON.stringify( payload), params);
 
+  
   const status = check(res, { "status was correct": (r) => r.status == expectedResponseCode });
   assert(res, status, errors, transactionMethod)
 
@@ -100,7 +106,7 @@ function errorTransaction(errors, cardType) {
     cardtype: cardType,
     responsecode: 500
   }
-  sendDummyTransaction(errors, "error", payload, 200, 415);
+  sendDummyTransaction(errors, "error", payload, 500,payload.responsecode );
 }
 function refundPayment(errors, cardtype, amount, transactionId, responseCode, expectedResponseCode = responseCode) {
 
@@ -127,7 +133,9 @@ export function visa_init() {
 
   const cardType = "visa";
   let errors = errorTrends.visa_errors;
-  initiatePayment(errors, cardType, Math.random(1, 300), 200);
+  const amount = Math.random(1, 300);
+  initiatePayment(errors, cardType, amount, 200);
+  errorTrends.visa_money.add(amount, { cardType: cardType });
 
 }
 export function visa_capture() {
@@ -135,16 +143,19 @@ export function visa_capture() {
 
   const cardType = "visa";
   let errors = errorTrends.visa_errors;
-  capture(errors, cardType, Math.random(1, 300), "tx1", 200);
-
+  const amount = Math.random(1, 300);
+  capture(errors, cardType, amount, "tx1", 200);
+  errorTrends.visa_money.add(amount, { cardType: cardType });
 }
 
 export function visa_refund() {
 
   const cardType = "visa";
   let errors = errorTrends.visa_errors;
-  refundPayment(errors, cardType, Math.random(1, 500), "tx1", 200);
+  const amount = Math.random(1, 500);
+  refundPayment(errors, cardType, amount, "tx1", 200);
 
+  errorTrends.visa_money.add(amount * -1, { cardType: cardType });
 
 }
 export function visa_error() {
@@ -158,7 +169,7 @@ export function visa_error() {
 export function paypal_error_zz() {
 
   const cardType = "paypal";
-  let errors = errorTrends.visa_errors;
+  let errors = errorTrends.paypal_errors;
   errorTransaction(errors, cardType);
 
 }

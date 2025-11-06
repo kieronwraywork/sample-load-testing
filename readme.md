@@ -35,12 +35,21 @@ On startup the grafana main_dashboard will be created pointing to prometheus wit
 1. Ensure rancher-desktop is running
 2. on command line `docker compose up --abort-on-container-exit` this will abort the test if anything fails to start
 
+See the faq below
+
 # FAQ
+
+## TIP Speed up test cycle for debugging tests / trends / etc
+To speed up the cycle time for debugging your tests, only start up the components you need, for example:
+`docker compose up k6 switchApi` will start k6 (so your tests will run) and only the api, you wont have to wait for grafana/etc to start up
 
 ## How do i add more tests
 
-Add more tests by editing `k6scripts/test1.js`
-If you want to add more JS files, you will need to edit the `docker-compose.yaml` script, since they are mentioned in there
+1. Add more tests by editing `k6scripts/*.js` files
+2. Ensure the correct JS file will be run, by editing the line in the `docker-compose.yaml` file to call the correct script (in the example below, replace "/k6-tests/k6-continuous.js" with your test script)
+`command: [ "run", "/k6-tests/k6-continuous.js", "--out", "experimental-prometheus-rw" ]`
+
+
 
 # Useful links
 https://medium.com/@nayani.shashi8/working-with-external-files-and-environment-variables-in-k6-1a10e571aee3
