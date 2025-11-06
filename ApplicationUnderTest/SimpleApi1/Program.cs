@@ -60,6 +60,7 @@ if (app.Environment.IsDevelopment())
 
 // Configure the Prometheus scraping endpoint
 app.MapPrometheusScrapingEndpoint();
+app.MapGet("/", () => "Simple API 1 - Payment Processor is running");
 
 app.MapPost("initiate", ( InitPayload payload) =>
 {
@@ -73,13 +74,23 @@ app.MapPost("capture", ( CapturePayload payload) =>
 {
     return Results.StatusCode(payload.ResponseCode);
 });
-app.MapPost("error", ( BasicPayload payload) =>
+app.MapPost("error", (BasicPayload payload) =>
 {
     return Results.StatusCode(payload.ResponseCode);
 });
+
+app.MapPost("showsels", (ShoePayload payload) =>
+{
+    return Results.StatusCode(payload.ResponseCode);
+});
+
+
 app.Run();
 
-
+public class ShoePayload
+{
+    public string CustomerId;
+}
 public class BasicPayload
 {
     public string? CardType;

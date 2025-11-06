@@ -6,19 +6,20 @@ deleteDatasources:
 
 datasources:
   - name: LOCAL_INFLUX
-    type: influx
+    type: influxdb
     access: proxy
     uid: cevyn8xwabcw0d
     url: http://influxdb:8086
     password:
     user:
-    database:
+    
     basicAuth: false
     basicAuthUser:
     basicAuthPassword:
     withCredentials:
     isDefault: false
     jsonData:
+      dbName: k6
       tlsAuth: false
       tlsAuthWithCACert: false
       pdcInjected: false

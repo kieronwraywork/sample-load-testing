@@ -19,13 +19,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
-  "id": 2,
+  "id": 1,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
@@ -115,7 +115,7 @@
           "alias": "Active VUs",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -160,7 +160,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
@@ -250,7 +250,7 @@
           "alias": "Requests per Second",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -307,7 +307,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
@@ -412,7 +412,7 @@
           "alias": "Num Errors",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -465,7 +465,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
@@ -570,7 +570,7 @@
           "alias": "$tag_check",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -627,7 +627,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "description": "Grouped by 1 sec intervals and group name",
       "fieldConfig": {
@@ -776,7 +776,7 @@
           "alias": "",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -845,7 +845,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "description": "Grouped by 1 sec intervals and group name",
       "fieldConfig": {
@@ -994,7 +994,7 @@
           "alias": "",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1063,7 +1063,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "description": "Grouped by 1 sec intervals",
       "fieldConfig": {
@@ -1212,7 +1212,7 @@
           "alias": "max",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1272,7 +1272,7 @@
           "alias": "p95",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1334,7 +1334,7 @@
           "alias": "p90",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1396,7 +1396,7 @@
           "alias": "min",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1459,7 +1459,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
@@ -1535,7 +1535,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [],
@@ -1582,11 +1582,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1598,12 +1611,29 @@
       },
       "id": 12,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1666,11 +1696,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1682,12 +1725,29 @@
       },
       "id": 16,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1750,11 +1810,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1766,12 +1839,29 @@
       },
       "id": 15,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [],
@@ -1821,11 +1911,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1837,12 +1940,29 @@
       },
       "id": 14,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [
@@ -1905,11 +2025,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1921,12 +2054,29 @@
       },
       "id": 11,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [],
@@ -1976,11 +2126,24 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -1992,12 +2155,29 @@
       },
       "id": 13,
       "maxDataPoints": 100,
-      "options": {},
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "groupBy": [],
@@ -2049,11 +2229,31 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -2064,13 +2264,25 @@
         "y": 29
       },
       "id": 67,
-      "options": {},
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "alias": "min",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "expr": "",
@@ -2187,11 +2399,31 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bew9u4qw3l88wa"
+        "uid": "cevyn8xwabcw0d"
       },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
         "overrides": []
       },
@@ -2202,13 +2434,25 @@
         "y": 29
       },
       "id": 73,
-      "options": {},
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.5.2",
       "targets": [
         {
           "alias": "min",
           "datasource": {
             "type": "influxdb",
-            "uid": "bew9u4qw3l88wa"
+            "uid": "cevyn8xwabcw0d"
           },
           "dsType": "influxdb",
           "expr": "",
@@ -2216,7 +2460,7 @@
           "groupBy": [
             {
               "params": [
-                "name"
+                "scenario::tag"
               ],
               "type": "tag"
             }
@@ -2390,7 +2634,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "bew9u4qw3l88wa",
+        "datasource": "cevyn8xwabcw0d",
         "definition": "",
         "includeAll": true,
         "label": "URL",
@@ -2407,7 +2651,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "bew9u4qw3l88wa",
+        "datasource": "cevyn8xwabcw0d",
         "definition": "",
         "includeAll": true,
         "label": "Group",
@@ -2425,7 +2669,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "bew9u4qw3l88wa",
+        "datasource": "cevyn8xwabcw0d",
         "definition": "",
         "includeAll": true,
         "label": "Tag",
