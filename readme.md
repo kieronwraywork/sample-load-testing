@@ -49,7 +49,8 @@ To speed up the cycle time for debugging your tests, only start up the component
 2. Ensure the correct JS file will be run, by editing the line in the `docker-compose.yaml` file to call the correct script (in the example below, replace "/k6-tests/k6-continuous.js" with your test script)
 `command: [ "run", "/k6-tests/k6-continuous.js", "--out", "experimental-prometheus-rw" ]`
 
-
+## How do i clean up old data
+run `docker compose down -v` this will delete all the persisted data in the volumes/etc
 
 # Useful links
 https://medium.com/@nayani.shashi8/working-with-external-files-and-environment-variables-in-k6-1a10e571aee3
