@@ -39,7 +39,7 @@ On startup the grafana main_dashboard will be created pointing to prometheus wit
 # Getting started
 1. Ensure rancher-desktop is running
 2. on command line `docker compose up` this will start the switch api, grafana, databases and k6 and run the tests
-
+3. once things are up and running, navigate to grafana url `http://localhost:3111` with uid+pwd admin (SKIP resetting the password) and open the dashboard
 
 See the faq below
 
