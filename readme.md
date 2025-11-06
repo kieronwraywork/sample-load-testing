@@ -31,9 +31,15 @@ On startup the grafana main_dashboard will be created pointing to prometheus wit
 | grafana/provisioning | grafana startup, add more dashboards and datasources here | https://community.grafana.com/t/data-source-on-startup/8618/2 |
 | k6scripts            | add more k6 test scripts here                             | https://grafana.com/docs/k6/latest/get-started/running-k6/    |
 
+# Pre-requisites
+1. Rancher Desktop installed and running
+2. VSCode
+3. Optional, npm to help debug your JS test scripts
+
 # Getting started
 1. Ensure rancher-desktop is running
-2. on command line `docker compose up --abort-on-container-exit` this will abort the test if anything fails to start
+2. on command line `docker compose up` this will start the switch api, grafana, databases and k6 and run the tests
+
 
 See the faq below
 
