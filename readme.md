@@ -60,6 +60,11 @@ run `docker compose down -v` this will delete all the persisted data in the volu
 
 # Useful links
 https://medium.com/@nayani.shashi8/working-with-external-files-and-environment-variables-in-k6-1a10e571aee3
+prometheus tags https://blog.devops.dev/load-testing-with-k6-all-about-the-metrics-part-ii-981a6b4153c1
 
 # how do i configure prometheus
 https://dev.to/leading-edje/open-source-load-testing-with-k6-docker-prometheus-and-grafana-5ej6
+
+
+example query
+sum by(name, cardType) (k6_http_reqs_total)

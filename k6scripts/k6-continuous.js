@@ -11,9 +11,9 @@ const errorTrends = {
   paypal_errors: new Trend('paypal_errors_trend', false)
 
 };
-const TestDuration='20s';
-const Infinite_tests=false;
-const TestExecutor=Infinite_tests ? 'externally-controlled' : 'constant-vus';
+const TestDuration = '20s';
+const Infinite_tests = false;
+const TestExecutor = Infinite_tests ? 'externally-controlled' : 'constant-vus';
 // see https://sii.pl/blog/en/performance-under-control-with-k6-additional-configurations-types-of-scenario-models-and-executors/
 
 export const options = {
@@ -52,16 +52,30 @@ export const options = {
 
 };
 
+/**
+ * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
+ * @param obj1
+ * @param obj2
+ * @returns obj3 a new object based on obj1 and obj2
+ */
+function merge_options(obj1,obj2){
+    var obj3 = {};
+    for (var attrname in obj1) { obj3[attrname] = obj1[attrname]; }
+    for (var attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+    return obj3;
+}
 
-function sendDummyTransaction(errors, transactionMethod, payload, expectedResponseCode) {
+function sendDummyTransaction(errors, transactionMethod, payload, expectedResponseCode, additionaltags) {
 
-let params = {
-    headers: { 'Content-Type': 'application/json' }
+  let defaulttags = { name: transactionMethod };
+  let tags = merge_options(defaulttags, additionaltags);
+  let params = {
+    headers: { 'Content-Type': 'application/json' },
+    tags: tags
+  }
+  const res = http.post(`http://switchApi:8080/${transactionMethod}`, JSON.stringify(payload), params);
 
-      }
-  const res = http.post(`http://switchApi:8080/${transactionMethod}`,JSON.stringify( payload), params);
 
-  
   const status = check(res, { "status was correct": (r) => r.status == expectedResponseCode });
   assert(res, status, errors, transactionMethod)
 
@@ -97,16 +111,16 @@ function initiatePayment(errors, cardtype, amount, responseCode, expectedRespons
     amount: amount,
     responsecode: responseCode
   }
-  sendDummyTransaction(errors, "initiate", payload, expectedResponseCode);
+  sendDummyTransaction(errors, "initiate", payload, expectedResponseCode, { cardType: cardtype , amount: amount , name: "initiatePayment"});
 }
-function errorTransaction(errors, cardType) {
+function errorTransaction(errors, cardtype) {
 
 
   var payload = {
-    cardtype: cardType,
+    cardtype: cardtype,
     responsecode: 500
   }
-  sendDummyTransaction(errors, "error", payload, 500,payload.responsecode );
+  sendDummyTransaction(errors, "error", payload, 500, payload.responsecode, { cardType: cardtype  });
 }
 function refundPayment(errors, cardtype, amount, transactionId, responseCode, expectedResponseCode = responseCode) {
 
@@ -116,7 +130,7 @@ function refundPayment(errors, cardtype, amount, transactionId, responseCode, ex
     transactionId: transactionId,
     responsecode: responseCode
   }
-  sendDummyTransaction(errors, "refund", payload, expectedResponseCode);
+  sendDummyTransaction(errors, "refund", payload, expectedResponseCode, { cardType: cardtype , amount: amount });
 }
 function capture(errors, cardtype, amount, transactionId, responseCode, expectedResponseCode = responseCode) {
 
@@ -126,7 +140,7 @@ function capture(errors, cardtype, amount, transactionId, responseCode, expected
     transactionId: transactionId,
     responsecode: responseCode
   }
-  sendDummyTransaction(errors, "capture", payload, expectedResponseCode);
+  sendDummyTransaction(errors, "capture", payload, expectedResponseCode, { cardType: cardtype , amount: amount });
 }
 
 export function visa_init() {
